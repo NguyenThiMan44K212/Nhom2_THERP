@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--        màn hình search-->
+        <record id="student_search_form_view" model="ir.ui.view">
+            <field name="name">student.search.form</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <search string="Hợp đồng">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="sdt"/>
+                    <field name="gmail"/>
+                    <field name="ngay_sinh"/>
+                    <field name="cmnd"/>
+                    <field name="gioi_tinh"/>
+                    <field name="chuyen_nganh"/>
+                    <field name="nam_nhap"/>
+                    <field name="status"/>
+                    <field name="he_dt"/>
+                    <field name="so_tc"/>
+
+                </search>
+            </field>
+        </record>
+        <!--        màn hình view-->
+        <record id="student_tree_view" model="ir.ui.view">
+            <field name="name">student.tree.view</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="sdt"/>
+                    <field name="gmail"/>
+                    <field name="ngay_sinh"/>
+                    <field name="cmnd"/>
+                    <field name="gioi_tinh"/>
+                    <field name="chuyen_nganh"/>
+                </tree>
+            </field>
+        </record>
+        <!--        bat dau nhap du lieu-->
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">student.form.view</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <form string="Mới">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                        <notebook>
+                            <page string="Thông tin cơ bản">
+                                <group>
+                                    <group>
+                                        <field name="sdt"/>
+                                        <field name="gmail"/>
+                                        <field name="ngay_sinh"/>
+                                        <field name="dia_chi_thuong_tru"/>
+                                        <field name="dia_chi_tam_tru"/>
+                                    </group>
+                                    <group>
+                                        <field name="cmnd"/>
+                                        <field name="gioi_tinh"/>
+                                        <field name="dan_toc"/>
+                                        <field name="ton_giao"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Thông tin đào tạo">
+                                <group>
+                                    <group>
+                                        <field name="nganh_hoc"/>
+                                        <field name="chuyen_nganh"/>
+                                        <field name="khoa"/>
+                                        <field name="lop"/>
+                                        <field name="bang_cap"/>
+                                        <field name="sinh_nam"/>
+                                        <field name="nganh_2"/>
+                                        <field name="stk"/>
+                                    </group>
+                                    <group>
+                                        <field name="nam_nhap"/>
+                                        <field name="nam_ra"/>
+                                        <field name="ten_giao"/>
+                                        <field name="status"/>
+                                        <field name="he_dt"/>
+                                        <field name="so_tc"/>
+                                        <field name="notes"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Thông tin gia đình">
+                                <group>
+                                    <field name="ten_ba"/>
+                                    <field name="nghe_ba"/>
+                                    <field name="ten_ma"/>
+                                    <field name="nghe_ma"/>
+                                    <field name="dia_chi"/>
+                                    <field name="lien_he"/>
+                                </group>
+                            </page>
+                            <page string="Thông tin liên quan khác">
+                                <group>
+                                    <field name="xe"/>
+                                    <field name="ktx"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <!--        ket thuc nhap du lieu-->
+        <record id="action_student" model="ir.actions.act_window">
+            <field name="name">Quản lý sinh viên</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                            (0, 0, {'view_mode': 'tree', 'view_id': ref('student_tree_view')}),
+                            (0, 0, {'view_mode': 'form', 'view_id': ref('student_form_view')})]"/>
+        </record>
+        <!--        tao menu -->
+        <menuitem id="menu_school"
+                  name="Quản lý trường học"
+                  action="action_student"
+                  sequence="0"
+                  groups="base.group_user"/>
+        <menuitem id="menu_student_on_account"
+                  parent="menu_school"
+                  name="Quản lý sinh viên"
+                  action="action_student"
+                  sequence="1"/>
+    </data>
+</odoo>
