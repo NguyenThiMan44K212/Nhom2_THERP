@@ -8,8 +8,8 @@ class specialized(models.Model):
     _description = 'specialized.schoolmanage'
     _inherit = ['mail.thread', 'mail.activity.mixin', 'portal.mixin']
 
-    name = fields.Char("specialized_name", required=True)
-    code = fields.Char("specialized_code", required=True)
+    specialized_name = fields.Char("specialized_name", required=True)
+    specialized_code = fields.Char("specialized_code", required=True)
     quantity_SV = fields.Integer("sỉ số SV")
     quantity_GV = fields.Integer("sỉ số GV")
     Department_name = fields.Char("Tên Khoa", required=True)

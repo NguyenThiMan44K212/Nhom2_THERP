@@ -10,8 +10,8 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
-                                <field name="code"/>
+                                <field name="specialized_name"/>
+                                <field name="specialized_code"/>
                                 <field name="quantity_SV"/>
                                 <field name="squantity_GV"/>
                                 <field name="Department_name"/>

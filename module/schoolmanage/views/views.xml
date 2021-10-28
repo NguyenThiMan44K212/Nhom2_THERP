@@ -10,11 +10,12 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
-                                <field name="code"/>
+                                <field name="Department_name"/>
+                                <field name="Department_code"/>
                                 <field name="Dean_name"/>
                                 <field name="sdt"/>
                                 <field name="gmail"/>
+                                <field name="address"/>
                             </group>
                             <group>
                                 <field name="specialized_name"/>
