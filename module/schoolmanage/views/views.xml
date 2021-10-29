@@ -13,7 +13,7 @@
                                 <field name="Department_name"/>
                                 <field name="Department_code"/>
                                 <field name="Dean_name"/>
-                                <field name="sdt"/>
+                                <field name="phone"/>
                                 <field name="gmail"/>
                                 <field name="address"/>
                             </group>
@@ -35,7 +35,7 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="Dean_name"/>
-                    <field name="sdt"/>
+                    <field name="phone"/>
                     <field name="gmail"/>
                     <field name="specialized_name"/>
                     <field name="specialized_code"/>
