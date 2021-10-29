@@ -4,6 +4,7 @@ from odoo.exceptions import UserError, ValidationError
 class Term(models.Model):
     _name = "school.term"
     _description = "Term"
+
     kyhoc = fields.Char('Semester', required=True)
     tenhp = fields.Char("Course's name", required=True)
     mahp = fields.Char('Course Code', required=True)

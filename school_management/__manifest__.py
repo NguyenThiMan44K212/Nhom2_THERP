@@ -13,11 +13,15 @@
         'hr'
     ],
     'data': [
+        'data/data.xml',
         'views/department.xml',
         'views/lecturer.xml',
         'views/student.xml',
-        'views/course.xml',
-        'views/school.xml'
+        'views/ology.xml',
+        # 'views/course.xml',
+        'views/classroom.xml',
+        'views/major.xml',
+        'views/school.xml',
     ],
     'demo': [],
     'qweb': [],
