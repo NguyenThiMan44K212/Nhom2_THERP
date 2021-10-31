@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_department_form_view_inherit" model="ir.ui.view">
+            <field name="name">hr.department.form.view.inherit</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='active']" position="before">
+                    <div class="oe_title">
+                        <h1>
+                            <field name="department_id" readonly="1"/>
+                        </h1>
+                        <h2>
+                            <field name="name" placeholder='Department Name'/>
+                        </h2>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='manager_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <field name="company_id" position="after">
+                    <field name="dean" string="Leader">
+                        <tree string="tree">
+                            <field name="name"/>
+                            <field name="work_phone"/>
+                            <field name="work_email"/>
+                            <field name="job"/>
+                        </tree>
+                    </field>
+                </field>
+                <field name="dean" position="after">
+                    <field name='ology_list'>
+                        <tree string="tree">
+                            <field name="name"/>
+                            <field name="major_quantity"/>
+                            <field name="training_system"/>
+                        </tree>
+                    </field>
+                </field>
+                <xpath expr="//field[@name='ology_list']" position="after">
+                    <field name="phone"/>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name='foundation_date'/>
+                </xpath>
+                <xpath expr="//field[@name='foundation_date']" position="after">
+                    <field name="email"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="department_act" model="ir.actions.act_window">
+            <field name="name">Department</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.department</field>
+            <field name="view_mode">tree,form,kanban,activity</field>
+        </record>
+    </data>
+</odoo>
