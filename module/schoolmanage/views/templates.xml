@@ -1,0 +1,67 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="schoolmanage.list">
+      <field name="name">schoolmanage list</field>
+      <field name="model">specialized.schoolmanage</field>
+      <field name="arch" type="xml">
+                        <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="specialized_name"/>
+                                <field name="specialized_code"/>
+                                <field name="quantity_SV"/>
+                                <field name="squantity_GV"/>
+                                <field name="Department_name"/>
+                                <field name="Department_code"/>
+                            </group>
+                            <group>
+                                <field name="phone"/>
+                                <field name="gmail"/>
+                                <field name="class_name"/>
+                                <field name="class_code"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="schoolmanage.list" model="ir.ui.view">
+            <field name="name">schoolmanage.list</field>
+            <field name="model">specialized.schoolmanage</field>
+            <field name="arch" type="xml">
+                <tree string="specialized" default_order="create_date asc">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="quantity_SV"/>
+                    <field name="quantity_GV"/>
+                    <field name="Department_name"/>
+                    <field name="Department_code"/>
+                    <field name="phone"/>
+                    <field name="gmail"/>
+                    <field name="class_name"/>
+                    <field name="class_code"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_specialized" model="ir.actions.act_window">
+            <field name="name">specialized</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">specialized.schoolmanage</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_content_create">
+                Create your first course!
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="specialized_menu"
+                  name="specialized"
+                  action="action_specialized"
+                  sequence="10"/>
+    </data>
+</odoo>

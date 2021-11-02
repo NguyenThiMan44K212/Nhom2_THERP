@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="schoolmanage.list">
+      <field name="name">schoolmanage list</field>
+      <field name="model">Department.schoolmanage</field>
+      <field name="arch" type="xml">
+                        <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="Department_name"/>
+                                <field name="Department_code"/>
+                                <field name="Dean_name"/>
+                                <field name="phone"/>
+                                <field name="gmail"/>
+                                <field name="address"/>
+                            </group>
+                            <group>
+                                <field name="specialized_name"/>
+                                <field name="specialized_code"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="schoolmanage.list" model="ir.ui.view">
+            <field name="name">schoolmanage.list</field>
+            <field name="model">Department.schoolmanage</field>
+            <field name="arch" type="xml">
+                <tree string="Department" default_order="create_date asc">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="Dean_name"/>
+                    <field name="phone"/>
+                    <field name="gmail"/>
+                    <field name="specialized_name"/>
+                    <field name="specialized_code"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_Department" model="ir.actions.act_window">
+            <field name="name">Department</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">Department.schoolmanage</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_content_create">
+                Create your first course!
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="Department_menu"
+                  name="Department"
+                  action="action_Department"
+                  sequence="10"/>
+    </data>
+</odoo>
