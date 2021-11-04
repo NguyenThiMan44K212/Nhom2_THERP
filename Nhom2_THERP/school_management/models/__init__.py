@@ -5,4 +5,4 @@ from . import ology
 from . import course
 from . import classroom
 from . import major
-
+from . import actionclass

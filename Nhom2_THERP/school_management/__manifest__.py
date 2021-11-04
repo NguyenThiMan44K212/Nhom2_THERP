@@ -22,6 +22,8 @@
         'views/classroom.xml',
         'views/major.xml',
         'views/school.xml',
+
+
     ],
     'demo': [],
     'qweb': [],

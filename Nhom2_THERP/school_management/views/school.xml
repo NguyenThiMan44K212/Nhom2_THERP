@@ -28,7 +28,7 @@
                   sequence="3"/>
 
         <menuitem name="Class"
-                  id="class"
+                  id="Class"
                   parent="department_parent"
                   action="class_act"
                   sequence="4"/>
@@ -44,6 +44,11 @@
                   name="Student"
                   action="action_student"
                   sequence="6"/>
+
+
+
+
+
 
 <!--        <menuitem id="term"-->
 <!--                  parent="school_root"-->

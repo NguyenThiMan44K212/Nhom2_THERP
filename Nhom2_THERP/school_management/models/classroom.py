@@ -30,15 +30,8 @@ class Class(models.Model):
     note = fields.Text('Description')
     start_date = fields.Date('Start Date', required=False)
     end_date = fields.Date('End Date')
-    action = fields.One2many('school.action', 'name_action', string='Action', required=True)
+    Action = fields.One2many(comodel_name="school.action",inverse_name="ID",string="Action",required=True)
 
-class Action(models.Model):
-    _name = "school.action"
-    _description = "Action model"
-
-    name_action = fields.Many2one('school.class', string='Action name')
-    location = fields.Char('Location')
-    time = fields.Date('Time')
 
     @api.model
     def create(self, vals):
@@ -46,6 +39,10 @@ class Action(models.Model):
             vals['classroom_ID'] = self.env['ir.sequence'].next_by_code('school.class') or _('New')
         res = super(Class, self).create(vals)
         return res
+
+
+
+
 
 
 

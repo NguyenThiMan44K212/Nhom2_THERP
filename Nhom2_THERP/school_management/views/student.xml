@@ -77,8 +77,13 @@
                                     <group>
                                         <field name="dia_chi_thuong_tru"/>
                                         <field name="dia_chi_tam_tru"/>
-                                        <field name="dan_toc"/>
-                                        <field name="ton_giao"/>
+                                        <field name="quocgia"/>
+                                        <field name="Tongiao" widget='one2many'>
+                                            <tree editable="bottom">
+                                                <field name="ton_giao"/>
+                                            </tree>
+                                        </field>
+
                                     </group>
                                     <group>
                                         <field name="cmnd"/>
@@ -125,11 +130,14 @@
                                 </group>
                             </page>
                             <page string="Family Information">
-                                <group>
-                                    <field name="dai_dien"/>
-                                    <field name="dia_chi"/>
-                                    <field name="lien_he"/>
-                                </group>
+                                <field name="family" widget='one2many'>
+                                    <tree>
+                                        <field name="Ten_daidien"/>
+                                        <field name="quan_he"/>
+                                        <field name="dia_chi"/>
+                                        <field name="lien_he"/>
+                                    </tree>
+                                </field>
                             </page>
                             <page string="Other Information">
                                 <group>

@@ -7,6 +7,15 @@
                 <form>
                     <sheet>
                         <group>
+
+                            <h1>
+                                <field name="classroom_ID" readonly="1"/>
+                            </h1>
+
+                            <h2>
+                                <field name="name"  placeholder="Class Name"/>
+                            </h2>
+
                             <group name="teacher" string="Homeroom Teacher">
                                 <field name="teacher_homeroom"/>
                                 <field name="phone_teacher"/>
@@ -32,22 +41,12 @@
                                 <field name="status"/>
                             </group>
                             <group>
-                                <field name="action">
-                                    <tree>
-                                         <field name="name_action"/>
-                                         <field name="location"/>
-                                         <field name="time"/>
-                                    </tree>
-                                    <form>
-                                        <group>
-                                            <field name="name_action"/>
-                                        </group>
-                                        <group>
-                                            <field name="location"/>
-                                            <field name="time"/>
-                                        </group>
-
-                                    </form>
+                                <field name="Action">
+                                  <tree editable = "bottom">
+                                      <field name="name_action"/>
+                                      <field name="location"/>
+                                      <field name="time"/>
+                                  </tree>
                                 </field>
                                 <field name="note"/>
                             </group>

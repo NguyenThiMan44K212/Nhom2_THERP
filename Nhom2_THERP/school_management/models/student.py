@@ -24,8 +24,6 @@ class Student(models.Model):
         ('one', 'Male'),
         ('two', 'Female'),
         ('three', 'Other')], required=True, default="one", string="Gender")
-    dan_toc = fields.Char("Nation")
-    ton_giao = fields.Char("Religion")
     # many
     # data=fields.Many2one("Tên bảng", string="Ngành học")
     nganh_hoc = fields.Many2many('school.ology', string="Ology")
@@ -58,11 +56,14 @@ class Student(models.Model):
     ], string='Training System', default='one', required=True)
     so_tc = fields.Char("Number Of Credits")
     notes = fields.Char(string="Description")
-    dai_dien = fields.Char("Surrogate")
-    dia_chi = fields.Char("Address")
-    lien_he = fields.Char("Phone Number")
     xe = fields.Boolean("Parking Card?")
     ktx = fields.Boolean("Dorm?")
+    quoc_gia = fields.Char("Country")
+    family = fields.One2many('school.family', 'Ten_daidien', string='Information family:', required=True)
+
+    # Dantoc = fields.One2many('school.nation', 'dan_toc', string='Nation', required=True)
+    Tongiao = fields.One2many('school.religion', 'ton_giao', string='Religion', required=True)
+    quocgia = fields.Many2one('res.country', string='Nation')
 
     @api.onchange('first_name', 'middle_name', 'last_name')
     def _onchange_name(self):
@@ -72,6 +73,28 @@ class Student(models.Model):
         else:
             self.name = str(self.first_name) + " " + str(
                 self.middle_name) + " " + str(self.last_name)
+
+class Family(models.Model):
+    _name = 'school.family'
+    _description = "Family"
+
+    Ten_daidien = fields.Many2one('school.student', string='Name')
+    quan_he = fields.Char("relationship")
+    dia_chi = fields.Char("Address")
+    lien_he = fields.Integer("Phone Number")
+
+# class Nation(models.Model):
+#     _name = 'school.nation'
+#     _description = "Nation"
+#     dan_toc = fields.Many2one('school.student', string='Nation')
+
+
+class Religion(models.Model):
+    _name = 'school.religion'
+    _description = "Religion"
+    ton_giao = fields.Many2one('school.student', string="Religion")
+
+
 
     @api.model
     def create(self, vals):
