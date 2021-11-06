@@ -1,0 +1,116 @@
+<odoo>
+    <data>
+        <record id="major_search_form_view" model="ir.ui.view">
+            <field name="name">major.search.form</field>
+            <field name="model">school.major</field>
+            <field name="arch" type="xml">
+                <search string="Major">
+                    <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="ology_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="major_view_activity" model="ir.ui.view">
+            <field name="name">major.activity</field>
+            <field name="model">school.major</field>
+            <field name="arch" type="xml">
+                <activity string="Major">
+                    <templates>
+                        <div t-name="activity-box">
+                            <div>
+                                <field name="name" display="full"/>
+                                <field name="department_id" muted="1" display="full"/>
+                            </div>
+                        </div>
+                    </templates>
+                </activity>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_major_graph">
+            <field name="name">major.graph</field>
+            <field name="model">school.major</field>
+            <field name="arch" type="xml">
+                <graph string="Quantity" sample="1">
+                    <field name="name"/>
+                    <field name="quantity_SV" type="measure"/>
+                    <field name="quantity_GV" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_major_pivot">
+            <field name="name">major.pivot</field>
+            <field name="model">school.major</field>
+            <field name="arch" type="xml">
+                <pivot string="Quantity" sample="1">
+                    <field name="name" type="row"/>
+                    <field name="quantity_SV" type="measure"/>
+                    <field name="quantity_GV" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="major_form_view" model="ir.ui.view">
+            <field name="name">school.major.form.view</field>
+            <field name="model">school.major</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="major_id" readonly="1"/>
+                            </h1>
+                            <h2>
+                                <field name="name" placeholder="Major Name"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="department_id"/>
+                                <field name="ology_id"/>
+                            </group>
+                            <group>
+                                <field name="quantity_SV"/>
+                                <field name="quantity_GV"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="major_tree_view" model="ir.ui.view">
+            <field name="name">school.major.tree.view</field>
+            <field name="model">school.major</field>
+            <field name="arch" type="xml">
+                <tree string="major" default_order="create_date asc">
+                    <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="ology_id"/>
+                    <field name="quantity_SV"/>
+                    <field name="quantity_GV"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="major_act" model="ir.actions.act_window">
+            <field name="name">Major</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.major</field>
+            <field name="view_mode">tree,form,pivot,graph,activity</field>
+            <field name="help" type="html">
+                <p class="oe_view_content_create">
+                    Create your first major!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
