@@ -1,0 +1,187 @@
+<odoo>
+    <data>
+        <record id="class_search_form_view" model="ir.ui.view">
+            <field name="name">class.search.form</field>
+            <field name="model">school.class</field>
+            <field name="arch" type="xml">
+                <search string="Class">
+                    <field name="name"/>
+                    <field name="teacher_homeroom"/>
+                    <field name="class_monitor"/>
+                    <field name="vice_monitor"/>
+                    <field name="secretary"/>
+                    <field name="school_year"/>
+                    <field name="course"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="class_view_activity" model="ir.ui.view">
+            <field name="name">class.activity</field>
+            <field name="model">school.class</field>
+            <field name="arch" type="xml">
+                <activity string="Class">
+                    <templates>
+                        <div t-name="activity-box">
+                            <div>
+                                <field name="name" display="full"/>
+                                <field name="teacher_homeroom" muted="1" display="full"/>
+                            </div>
+                        </div>
+                    </templates>
+                </activity>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_class_graph">
+            <field name="name">class.graph</field>
+            <field name="model">school.class</field>
+            <field name="arch" type="xml">
+                <graph string="Quantity Student" sample="1">
+                    <field name="name"/>
+                    <field name="total" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_class_pivot">
+            <field name="name">class.pivot</field>
+            <field name="model">school.class</field>
+            <field name="arch" type="xml">
+                <pivot string="Quantity Student" sample="1">
+                    <field name="name" type="row"/>
+                    <field name="total" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="class_form_view" model="ir.ui.view">
+            <field name="name">school.class.form.view</field>
+            <field name="model">school.class</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="class_ID" readonly="1"/>
+                            </h1>
+                            <h2>
+                                <field name="name" placeholder="Class Name"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group name="teacher" string="Homeroom Teacher">
+                                <field name="teacher_homeroom"/>
+                                <field name="phone_teacher"/>
+                                <field name="email_teacher"/>
+                            </group>
+                            <group string="Student list">
+                                <field name="student_list" >
+                                    <tree >
+                                        <field name="first_name"/>
+                                        <field name="middle_name"/>
+                                        <field name="last_name"/>
+                                        <field name="gioi_tinh"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="first_name"/>
+                                            <field name="middle_name"/>
+                                            <field name="last_name"/>
+                                        </group>
+                                        <group>
+                                            <field name="gioi_tinh"/>
+                                            <field name="ngay_sinh"/>
+                                            <field name="sdt"/>
+                                            <field name="email"/>
+                                        </group>
+                                    </form>
+                            </field>
+                            </group>
+                            <group name="class_officers" string="Class Officers">
+                                <field name="class_monitor"/>
+                                <field name="phone_class_monitor"/>
+                                <field name="email_class_monitor"/>
+                                <field name="vice_monitor"/>
+                                <field name="phone_vice_monitor"/>
+                                <field name="email_vice_monitor"/>
+                                <field name="secretary"/>
+                                <field name="phone_secretary"/>
+                                <field name="email_secretary"/>
+                            </group>
+                            <group name="status" string="Status">
+                                <field name="total"/>
+                                <field name="course"/>
+                                <field name="school_year"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="status"/>
+                            </group>
+                            <group name="action" string="Action">
+                                <field name="action" Optional="show">
+                                    <tree>
+                                        <field name="name_action"/>
+                                        <field name="location"/>
+                                        <field name="time"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name_action" string="Action Name"/>
+                                            <field name="location" string="Location"/>
+                                            <field name="time" string="Time"/>
+                                            <field name="content" string="Content"/>
+                                        </group>
+                                    </form>
+                                </field>
+                                <field name="note"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="class_tree_view" model="ir.ui.view">
+            <field name="name">class.tree.view</field>
+            <field name="model">school.class</field>
+            <field name="arch" type="xml">
+                <tree string="class" default_order="create_date asc">
+                    <field name="name"/>
+                    <field name="teacher_homeroom"/>
+                    <field name="class_monitor"/>
+                    <field name="vice_monitor"/>
+                    <field name="secretary"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_tree_view" model="ir.ui.view">
+            <field name="name">action.tree.view</field>
+            <field name="model">school.action</field>
+            <field name="arch" type="xml">
+                <tree string="class" default_order="create_date asc">
+                    <field name="name_action"/>
+                    <field name="location"/>
+                    <field name="time"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="class_act" model="ir.actions.act_window">
+            <field name="name">Class</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.class</field>
+            <field name="view_mode">tree,form,pivot,graph,activity</field>
+            <field name="help" type="html">
+                <p class="oe_view_content_create">
+                    Create your first class!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
