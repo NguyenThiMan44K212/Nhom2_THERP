@@ -24,7 +24,7 @@ class Student(models.Model):
         ('one', 'Male'),
         ('two', 'Female'),
         ('three', 'Other')], required=True, default="one", string="Gender")
-    lop = fields.Many2many('school.class', string="Class")
+    lop = fields.Many2one(comodel_name='school.class', string="Class", select=True, copy=False)
     nganh_hoc = fields.Many2many('school.ology', string="Ology")
     chuyen_nganh = fields.Many2many('school.major', string="Major")
     khoa = fields.Many2one('hr.department', 'Department', required=True)

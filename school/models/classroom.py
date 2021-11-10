@@ -31,6 +31,8 @@ class Class(models.Model):
     start_date = fields.Date('Start Date', required=False)
     end_date = fields.Date('End Date')
     action = fields.Many2many('school.action', string='Action')
+    student_list = fields.One2many(comodel_name='school.student', inverse_name='lop', string='Student List')
+    major_id = fields.Many2one(comodel_name='school.major', string="Belonging Major", select=True, copy=False)
 
     @api.model
     def create(self, vals):

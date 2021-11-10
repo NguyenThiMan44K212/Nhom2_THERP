@@ -71,6 +71,15 @@
                             <group>
                                 <field name="department_id"/>
                                 <field name="ology_id"/>
+                                <field name="class_list" widget='one2many'>
+                                    <tree string="tree">
+                                        <field name="name"/>
+                                        <field name="teacher_homeroom"/>
+                                        <field name="class_monitor"/>
+                                        <field name="vice_monitor"/>
+                                        <field name="secretary"/>
+                                    </tree>
+                                </field>
                             </group>
                             <group>
                                 <field name="quantity_SV"/>

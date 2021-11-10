@@ -10,6 +10,7 @@
                     <field name="class_monitor"/>
                     <field name="vice_monitor"/>
                     <field name="secretary"/>
+                    <field name="major_id"/>
                     <field name="school_year"/>
                     <field name="course"/>
                 </search>
@@ -86,13 +87,15 @@
                                 <field name="phone_secretary"/>
                                 <field name="email_secretary"/>
                             </group>
-                            <group name="status" string="Status">
-                                <field name="total"/>
-                                <field name="course"/>
-                                <field name="school_year"/>
-                                <field name="start_date"/>
-                                <field name="end_date"/>
-                                <field name="status"/>
+                            <group string="Student list">
+                                <field name="student_list" widget='one2many'>
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="gioi_tinh"/>
+                                        <field name="sdt"/>
+                                        <field name="email"/>
+                                    </tree>
+                                </field>
                             </group>
                             <group name="action" string="Action">
                                 <field name="action" Optional="show">
@@ -110,8 +113,17 @@
                                         </group>
                                     </form>
                                 </field>
-                                <field name="note"/>
                             </group>
+                        </group>
+                        <group name="status" string="Status">
+                            <field name="total"/>
+                            <field name="major_id"/>
+                            <field name="course"/>
+                            <field name="school_year"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="status"/>
+                            <field name="note"/>
                         </group>
                     </sheet>
                     <div class="oe_chatter">

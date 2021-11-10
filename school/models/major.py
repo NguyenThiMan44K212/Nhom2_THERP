@@ -12,6 +12,7 @@ class Major(models.Model):
     ology_id = fields.Many2one(comodel_name='school.ology', string="Belonging Ology", select=True, copy=False)
     quantity_SV = fields.Integer("Quantity Student")
     quantity_GV = fields.Integer("Quantity Lecturer")
+    class_list = fields.One2many(comodel_name='school.class', inverse_name='major_id', string='Class List')
 
     @api.model
     def create(self, vals):
