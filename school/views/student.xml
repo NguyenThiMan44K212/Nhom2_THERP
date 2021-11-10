@@ -78,6 +78,7 @@
                             <page string="Private Information">
                                 <group>
                                     <group>
+                                        <field name="quoc_gia"/>
                                         <field name="dia_chi_thuong_tru"/>
                                         <field name="dia_chi_tam_tru"/>
                                         <field name="dan_toc"/>

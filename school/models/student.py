@@ -51,12 +51,12 @@ class Student(models.Model):
         ('three', 'High Quality'),
         ('four', 'Postgraduate'),
     ], string='Training System', default='one', required=True)
-    so_tc = fields.Char("Number Of Credits")
+    so_tc = fields.Integer("Number Of Credits")
     notes = fields.Text(string="Description")
     xe = fields.Boolean("Parking Card?")
     ktx = fields.Boolean("Dorm?")
     anh = fields.Binary('Image')
-    quoc_gia = fields.Char("Country")
+    quoc_gia = fields.Many2one('res.country', string='Country', required=True)
     family = fields.Many2many('school.family', string='Information Family', required=True)
     dan_toc = fields.Many2one('school.nation', string='Nation', required=True)
     ton_giao = fields.Many2one('school.religion', string='Religion', required=True)
