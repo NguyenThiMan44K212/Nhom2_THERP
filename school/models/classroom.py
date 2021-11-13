@@ -20,7 +20,7 @@ class Class(models.Model):
     secretary = fields.Char('Secretary Name', required=True)
     phone_secretary = fields.Char('Secretary Phone')
     email_secretary = fields.Char('Secretary Email')
-    total = fields.Integer('Number Of Students', required=True)
+    total = fields.Integer('Number Of Students')
     school_year = fields.Char('School Year', required=True)
     course = fields.Char('Course', required=True)
     status = fields.Selection([

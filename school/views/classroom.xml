@@ -145,6 +145,7 @@
                     <field name="class_monitor"/>
                     <field name="vice_monitor"/>
                     <field name="secretary"/>
+                    <field name="major_id"/>
                 </tree>
             </field>
         </record>

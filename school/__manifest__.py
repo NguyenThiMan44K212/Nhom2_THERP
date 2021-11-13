@@ -20,7 +20,9 @@
         'views/major.xml',
         'views/student.xml',
         'views/lecturer.xml',
-        'views/school.xml'
+        'views/school.xml',
+        'reports/report_student.xml',
+        'reports/report.xml'
     ],
     'demo': [],
     'qweb': [],
