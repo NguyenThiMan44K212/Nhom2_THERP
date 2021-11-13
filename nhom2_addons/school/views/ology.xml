@@ -1,0 +1,125 @@
+<odoo>
+    <data>
+        <record id="ology_search_form_view" model="ir.ui.view">
+            <field name="name">ology.search.form</field>
+            <field name="model">school.ology</field>
+            <field name="arch" type="xml">
+                <search string="Ology">
+                    <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="major_list"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="ology_view_activity" model="ir.ui.view">
+            <field name="name">major.activity</field>
+            <field name="model">school.ology</field>
+            <field name="arch" type="xml">
+                <activity string="Ology">
+                    <templates>
+                        <div t-name="activity-box">
+                            <div>
+                                <field name="name" display="full"/>
+                                <field name="ology_id" muted="1" display="full"/>
+                            </div>
+                        </div>
+                    </templates>
+                </activity>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_ology_graph">
+            <field name="name">ology.graph</field>
+            <field name="model">school.ology</field>
+            <field name="arch" type="xml">
+                <graph string="Quantity" sample="1">
+                    <field name="name"/>
+                    <field name="major_quantity" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_major_pivot">
+            <field name="name">major.pivot</field>
+            <field name="model">school.ology</field>
+            <field name="arch" type="xml">
+                <pivot string="Quantity" sample="1">
+                    <field name="name" type="row"/>
+                    <field name="major_quantity" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="ology_form_view" model="ir.ui.view">
+            <field name="name">school.ology.form.view</field>
+            <field name="model">school.ology</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="ology_id" readonly="1"/>
+                            </h1>
+                            <h2>
+                                <field name="name" placeholder="Ology Name"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="department_id"/>
+                                <field name="major_quantity"/>
+                                <field name="major_list" widget='one2many'>
+                                    <tree string="tree">
+                                        <field name="name"/>
+                                        <field name="quantity_SV"/>
+                                        <field name="quantity_GV"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group>
+                                <field name="training_system"/>
+                                <field name="training_time"/>
+                                <field name="number_of_credits"/>
+                                <field name="required_credits"/>
+                                <field name="selected_credits"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="ology_tree_view" model="ir.ui.view">
+            <field name="name">school.ology.tree.view</field>
+            <field name="model">school.ology</field>
+            <field name="arch" type="xml">
+                <tree string="ology_class" default_order="create_date asc">
+                    <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="major_quantity"/>
+                    <field name="training_system"/>
+                    <field name="training_time"/>
+                    <field name="number_of_credits"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ology_act" model="ir.actions.act_window">
+            <field name="name">Ology</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.ology</field>
+            <field name="view_mode">tree,form,pivot,graph,activity</field>
+            <field name="help" type="html">
+                <p class="oe_view_content_create">
+                    Create your first ology!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

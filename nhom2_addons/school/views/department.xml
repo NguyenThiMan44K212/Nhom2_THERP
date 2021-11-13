@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="department_search_form_view" model="ir.ui.view">
+            <field name="name">department.search.form</field>
+            <field name="model">hr.department</field>
+            <field name="arch" type="xml">
+                <search string="Department">
+                    <field name="name"/>
+                    <field name="email"/>
+                    <field name="ology_list"/>
+                    <field name="dean"/>
+                    <field name="program"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="hr_department_form_view_inherit" model="ir.ui.view">
+            <field name="name">hr.department.form.view.inherit</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='active']" position="before">
+                    <div class="oe_title">
+                        <h1>
+                            <field name="department_id" readonly="1"/>
+                        </h1>
+                        <h2>
+                            <field name="name" placeholder='Department Name'/>
+                        </h2>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='manager_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//sheet/group" position="after">
+                    <group name="infor">
+                        <xpath expr="//field[@name='company_id']" position="after">
+                            <group name="contact" string="Contact Information">
+                                <field name='foundation_date' string='Foundation Date'/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                            </group>
+                        </xpath>
+                    </group>
+                </xpath>
+<!--                <xpath expr="//group[@name='infor']" position="after">-->
+<!--                    <group>-->
+                        <xpath expr="//group[@name='contact']" position="after">
+                            <group name="dean" string="Leader Information">
+                                <field name="dean" widget="many2many">
+                                    <tree string="tree">
+                                        <field name="name"/>
+                                        <field name="work_phone"/>
+                                        <field name="work_email"/>
+                                        <field name="job"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </xpath>
+                        <xpath expr="//group[@name='dean']" position="after">
+                            <group name="ology" string="Ology Information">
+                                <field name="ology_list">
+                                    <tree string="tree">
+                                        <field name="name"/>
+                                        <field name="major_quantity"/>
+                                        <field name="training_system"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </xpath>
+                        <xpath expr="//group[@name='ology']" position="after">
+                            <group name="action" string="Action Information">
+                                <field name="action" Optional="show">
+                                    <tree>
+                                        <field name="name_action"/>
+                                        <field name="location"/>
+                                        <field name="time"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name_action" string="Action Name"/>
+                                            <field name="location" string="Location"/>
+                                            <field name="time" string="Time"/>
+                                            <field name="content" string="Content"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </group>
+                        </xpath>
+                        <xpath expr="//group[@name='action']" position="after">
+                            <group name="program" string="Cooperation Activities">
+                                <field name="program" Optional="show">
+                                    <tree>
+                                        <field name="name_program"/>
+                                        <field name="name_business"/>
+                                        <field name="signed_at"/>
+                                        <field name="signed_on"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="name_program" string="Program Name"/>
+                                            <field name="name_business" string="Company Name"/>
+                                            <field name="signed_at" string="Signed At"/>
+                                            <field name="signed_on" string="Signed On"/>
+                                            <field name="content" string="Content"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </group>
+<!--                        </xpath>-->
+<!--                    </group>-->
+                    <xpath expr="//group[@name='program']" position="after">
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </xpath>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="department_tree_view" model="ir.ui.view">
+            <field name="name">department.tree.view</field>
+            <field name="model">hr.department</field>
+            <field name="arch" type="xml">
+                <tree string="department" default_order="create_date asc">
+                    <field name="name"/>
+                    <field name="foundation_date"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="department_act" model="ir.actions.act_window">
+            <field name="name">Department</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.department</field>
+            <field name="view_mode">tree,form,kanban,activity</field>
+        </record>
+    </data>
+</odoo>
